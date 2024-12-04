@@ -1,0 +1,76 @@
+//pattern FSM
+module patternController (
+    input wire clk,
+    input wire rst,
+    input wire [1:0] stateSelect, // 2-bit input to select state (0-3)
+    input wire [3:0] patternIndex, // Pattern selector for each module
+    output reg [9:0] patternRow [9:0] // 10x10 matrix output
+);
+
+    // State enumeration
+    localparam STATE_INIT = 2'b00,
+               STATE_EXPLODE = 2'b01,
+               STATE_SHAPES = 2'b10,
+               STATE_FINAL = 2'b11;
+
+    // Wires for module outputs
+    wire [9:0] patternInit [9:0];
+    wire [9:0] patternExplode [9:0];
+    wire [9:0] patternShapes [9:0];
+    wire [9:0] patternFinal [9:0];
+
+    // Instantiate modules
+    patternStorage initPattern (
+        .clk(clk),
+        .rst(rst),
+        .patternIndex(4'b0), // Initial state is blank, no need for pattern selection
+        .patternRow(patternInit)
+    );
+
+    patternStorage explodePattern (
+        .clk(clk),
+        .rst(rst),
+        .patternIndex(patternIndex),
+        .patternRow(patternExplode)
+    );
+
+    patternShapes shapePattern (
+        .clk(clk),
+        .rst(rst),
+        .patternIndex(patternIndex),
+        .patternRow(patternShapes)
+    );
+
+    patternStorage finalPattern (
+        .clk(clk),
+        .rst(rst),
+        .patternIndex(patternIndex),
+        .patternRow(patternFinal)
+    );
+
+    // State-based output selection
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            // Clear outputs on reset
+            patternRow[0] <= 10'b0;
+            patternRow[1] <= 10'b0;
+            patternRow[2] <= 10'b0;
+            patternRow[3] <= 10'b0;
+            patternRow[4] <= 10'b0;
+            patternRow[5] <= 10'b0;
+            patternRow[6] <= 10'b0;
+            patternRow[7] <= 10'b0;
+            patternRow[8] <= 10'b0;
+            patternRow[9] <= 10'b0;
+        end else begin
+            case (stateSelect)
+                STATE_INIT: patternRow <= patternInit;
+                STATE_EXPLODE: patternRow <= patternExplode;
+                STATE_SHAPES: patternRow <= patternShapes;
+                STATE_FINAL: patternRow <= patternFinal;
+                default: patternRow <= 10'b0; // Fallback
+            endcase
+        end
+    end
+
+endmodule

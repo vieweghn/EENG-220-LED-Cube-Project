@@ -1,0 +1,77 @@
+//pattern code UINDY
+
+// U
+
+[0:9] row[10]
+
+assign row[0]= 10b'0000000000
+assign row[1]= 10b'0110000110;
+assign row[2]= 10b'0110000110;
+assign row[3]= 10b'0110000110;
+assign row[4]= 10b'0110000110;
+assign row[5]= 10b'0110000110;
+assign row[6]= 10b'0110000110;
+assign row[7]= 10b'0111001110;
+assign row[8]= 10b'0111111110;
+assign row[9]= 10b'0000110000;
+
+
+// I
+
+[0:9] row[10]
+
+assign row[0]= 10b'0000000000
+assign row[1]= 10b'0111111110;
+assign row[2]= 10b'0000110000;
+assign row[3]= 10b'0000110000;
+assign row[4]= 10b'0000110000;
+assign row[5]= 10b'0000110000;
+assign row[6]= 10b'0000110000;
+assign row[7]= 10b'0000110000;
+assign row[8]= 10b'0111111110;
+assign row[9]= 10b'0000000000;
+
+// N
+
+[0:9] row[10]
+
+assign row[0]= 10b'0000000000
+assign row[1]= 10b'0100000010;
+assign row[2]= 10b'0110000010;
+assign row[3]= 10b'0101000010;
+assign row[4]= 10b'0100100010;
+assign row[5]= 10b'0100010010;
+assign row[6]= 10b'0100001010;
+assign row[7]= 10b'0100000110;
+assign row[8]= 10b'0100000010;
+assign row[9]= 10b'0000000000;
+
+// D
+
+[0:9] row[10]
+
+assign row[0]= 10b'0000000000
+assign row[1]= 10b'0111111100;
+assign row[2]= 10b'0100000010;
+assign row[3]= 10b'0100000010;
+assign row[4]= 10b'0100000010;
+assign row[5]= 10b'0100000010;
+assign row[6]= 10b'0100000010;
+assign row[7]= 10b'0100000010;
+assign row[8]= 10b'0111111100;
+assign row[9]= 10b'0000000000;
+
+// Y
+
+[0:9] row[10]
+
+assign row[0]= 10b'0000000000
+assign row[1]= 10b'0110000110;
+assign row[2]= 10b'0110000110;
+assign row[3]= 10b'0110000110;
+assign row[4]= 10b'0111001110;
+assign row[5]= 10b'0000110000;
+assign row[6]= 10b'0000110000;
+assign row[7]= 10b'0000110000;
+assign row[8]= 10b'0000110000;
+assign row[9]= 10b'0000000000;
