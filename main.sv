@@ -45,13 +45,14 @@ module main(
         .clk(clk0_5Hz)
     );
 	 
-	 // Pattern Retrival logic
-	 patternStorage patternRetrival (
-			.clk(clk_120Hz), 
-			.rst(~button0),
-			.patternIndex(patternIndex),
-			.patternRow(pattern)
-			);
+// Pattern Controller FSM
+    patternController patternFSM (
+        .clk(clk_120Hz),   
+        .rst(~button0),    
+        .btn(button1),     
+        .patternIndex(4'b0),
+        .patternRow(pattern) 
+    );
 
     // Screen refresh logic
     screenRefresh sr (
