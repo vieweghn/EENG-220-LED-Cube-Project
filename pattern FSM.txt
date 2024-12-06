@@ -2,9 +2,9 @@
 module patternController (
     input wire clk,
     input wire rst,
-    input wire [1:0] stateSelect, // 2-bit input to select state (0-3)
-    input wire [3:0] patternIndex, // Pattern selector for each module
-    output reg [9:0] patternRow [9:0] // 10x10 matrix output
+    input wire [1:0] stateSelect, 
+    input wire [3:0] patternIndex, 
+    output reg [9:0] patternRow [9:0] 
 );
 
     // State enumeration
@@ -23,7 +23,7 @@ module patternController (
     patternStorage initPattern (
         .clk(clk),
         .rst(rst),
-        .patternIndex(4'b0), // Initial state is blank, no need for pattern selection
+        .patternIndex(4'b0), // Initial state is blank
         .patternRow(patternInit)
     );
 
